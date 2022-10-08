@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+int length(char input[])
+{
+    int count = 0;
+    for (int i = 0; input[i] != '\0'; i++)
+    {
+        count++;
+    }
+    return count;
+}
+int palindrome(char input[], int start, int end)
+{
+    int check = 0;
+    if (input[0] == '\0' || input[1] == '\0')
+        return 1;
+    if (start >= end)
+        return 1;
+    else if (input[start] == input[end])
+    {
+        check = palindrome(input, start + 1, end - 1);
+    }
+    if (check == 1)
+        return 1;
+    else
+        return 0;
+}
+bool checkPalindrome(char input[])
+{
+    // Write your code here
+    int len = length(input);
+    palindrome(input, 0, len - 1);
+}
+
+int main()
+{
+    char input[50];
+    cin >> input;
+
+    if (checkPalindrome(input))
+    {
+        cout << "true" << endl;
+    }
+    else
+    {
+        cout << "false" << endl;
+    }
+}
